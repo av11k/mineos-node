@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
   git \
   curl \
   rlwrap \
+  openjdk-17-jre-headless \
   openjdk-16-jre-headless \
   openjdk-8-jre-headless \
   ca-certificates-java \
@@ -46,7 +47,7 @@ CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-EXPOSE 8443 25565-25570
+EXPOSE 8443 18880-18889 25565-25570
 VOLUME /var/games/minecraft
 
 ENV USER_PASSWORD=random_see_log USER_NAME=mc USER_UID=1000 USE_HTTPS=true SERVER_PORT=8443
